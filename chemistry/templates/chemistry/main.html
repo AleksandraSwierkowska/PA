@@ -8,17 +8,6 @@
             box-sizing: border-box;
         }
 
-        .column {
-            float: left;
-            width: 50.0%;
-            padding: 5px;
-        }
-
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
         .btn {
             background-color: lightblue;
             padding: 14px 28px;
@@ -41,7 +30,7 @@
 <h1 style="text-align:center;">Automat regulujący pH w zbiorniku</h1>
 <p>Stan zbiornika:</p>
 <ul>
-    <li>Ustalone pH: {{ container.pH }}</li>
+    <li>Ustalone pH: {{ container.aim_pH }}</li>
     <li>Ilość płynu w tej chwili: {{ container.V }}</li>
 </ul>
 <p>Substancja dodana przez użytkownika:</p>
@@ -49,18 +38,13 @@
     <li>Ostatnio dodane: {{ substance }}</li>
     <li>Objętość dodanej substancji: {{ substance.V }}</li>
 </ul>
-<div class="row">
-    <div class="column">
-        <img src="data:image/png;base64,{{pic}}"  />
-    </div>
-    <div class="column">
-        <img src="data:image/png;base64,{{pic}}"  />
-    </div>
-</div>
+<center>
+<img src="{{ container.Plot.url }}" />
+</center>
+
 <br/>
 <br/>
 <a href="/add"><button class="btn dodaj">Dodaj substancję</button></a>
-<button class="btn usun">Usuń zawartość zbiornika</button>
-
+<a href="/del"><button class="btn usun" >Usuń zawartość zbiornika</button></a>
 </body>
 </html> 

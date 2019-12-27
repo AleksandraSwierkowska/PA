@@ -2,8 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 
-# Create your models here.
-
 class Acid(models.Model):
     def __str__(self):
         return self.name
@@ -37,5 +35,6 @@ class Container(models.Model):
     hydroxides = models.ManyToManyField(Hydroxide, default=None)
     acids = models.ManyToManyField(Acid, default=None)
     CmH = models.FloatField(default=0.0000001)
-    pHs = []
-    Vs = []
+    pHs = models.CharField(max_length=255, default='', blank=True)
+    Vs = models.CharField(max_length=255, default='', blank=True)
+    Plot = models.ImageField(upload_to='media/', default=None)
