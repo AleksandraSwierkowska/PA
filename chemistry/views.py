@@ -50,7 +50,7 @@ sns.set_style("ticks")
 
 # Create your views here.
 def plot_ph(x, y):
-    plt.xlabel("Time")
+    plt.xlabel("Volume")
     plt.ylabel("pH")
     plt.minorticks_on()
     plt.grid(which="major", linestyle='-', linewidth='0.7')
