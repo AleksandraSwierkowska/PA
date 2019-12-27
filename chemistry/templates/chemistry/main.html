@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zbiornik</title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 50.0%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .btn {
+            background-color: lightblue;
+            padding: 14px 28px;
+            font-size: 24px;
+            font-weight: bolder;
+            cursor: pointer;
+            display: inline-block;
+
+        }
+
+        .btn:hover {background: dodgerblue;}
+
+        .dodaj {color: black; float: left;}
+        .usun {color: black; float: right;}
+    </style>
+    <title>Page Title</title>
+</head>
+<br>
+
+<h1 style="text-align:center;">Automat regulujący pH w zbiorniku</h1>
+<p>Stan zbiornika:</p>
+<ul>
+    <li>Ustalone pH: {{ container.pH }}</li>
+    <li>Ilość płynu w tej chwili: {{ container.V }}</li>
+</ul>
+<p>Substancja dodana przez użytkownika:</p>
+<ul>
+    <li>Ostatnio dodane: {{ substance }}</li>
+    <li>Objętość dodanej substancji: {{ substance.V }}</li>
+</ul>
+<div class="row">
+    <div class="column">
+        <img src="{% static 'chemistry/images/pic1.png' %}" style="width:100%">
+    </div>
+    <div class="column">
+        <img src="{% static 'chemistry/images/pic1.png' %}" style="width:100%">
+    </div>
+</div>
+<br/>
+<br/>
+<a href="/add"><button class="btn dodaj">Dodaj substancję</button></a>
+<button class="btn usun">Usuń zawartość zbiornika</button>
+
+</body>
+</html> 

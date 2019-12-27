@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Acid, Hydroxide
+from .models import Acid, Hydroxide, Container
 
 
 # Register your models here.
@@ -13,5 +13,10 @@ class HydroxideAdmin(admin.ModelAdmin):
     list_filter = ['mol_OH']
 
 
+class ContainerAdmin(admin.ModelAdmin):
+    list_display = ['pH', 'V', ]
+
+
 admin.site.register(Acid, AcidAdmin)
 admin.site.register(Hydroxide, HydroxideAdmin)
+admin.site.register(Container, ContainerAdmin)
