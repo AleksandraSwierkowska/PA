@@ -37,3 +37,5 @@ class Container(models.Model):
     hydroxides = models.ManyToManyField(Hydroxide, default=None)
     acids = models.ManyToManyField(Acid, default=None)
     CmH = models.FloatField(default=0.0000001)
+    pHs = []
+    Vs = []
