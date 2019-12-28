@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add</title>
+    <title>Dodaj zasadę</title>
     <style>
     input[type=text], select {
   width: 20%;
@@ -55,23 +55,13 @@
 </div>
 <div class="wciecie">
     <br>
-    <br>
-<div>
-    Rodzaj substancji:
-    <br>
-    <select>
-  <option value="HCl">HCl</option>
-  <option value="NaOH">NaOH</option>
-</select>
-</div>
-<br>
-<form action="/action_page.php">
-Ilość do dolania:
-    <br>
-    <input type="text" name="ilosc">&nbsp;&nbsp;&nbsp;[ml]<br>
-</form>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Dodaj</button>
+    </form>
 </div>
 <body>
-<button class="btn dodaj" id="foo">Dolej substancje</button>
+<a href="/"><button class="btn dodaj" >Powrót</button></a>
 </body>
 </html>

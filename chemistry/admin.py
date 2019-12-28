@@ -4,12 +4,12 @@ from .models import Acid, Hydroxide, Container
 
 # Register your models here.
 class AcidAdmin(admin.ModelAdmin):
-    list_display = ['name', 'mol_H', 'all_mol']
+    list_display = ['name', 'mol_H', 'Cm']
     list_filter = ['mol_H']
 
 
 class HydroxideAdmin(admin.ModelAdmin):
-    list_display = ['name', 'mol_OH', 'all_mol']
+    list_display = ['name', 'mol_OH', 'Cm']
     list_filter = ['mol_OH']
 
 

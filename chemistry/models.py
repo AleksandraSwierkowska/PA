@@ -8,8 +8,8 @@ class Acid(models.Model):
 
     name = models.CharField(max_length=8)
     V = models.FloatField(default=0)
-    mol_H = models.IntegerField('[H+]')
-    all_mol = models.IntegerField('Cm')
+    mol_H = models.FloatField('nH', default=1.0)
+    Cm = models.IntegerField('Cm')
     when_added = models.DateTimeField(default=timezone.now())
 
 
@@ -19,8 +19,8 @@ class Hydroxide(models.Model):
 
     name = models.CharField(max_length=8)
     V = models.FloatField(default=0)
-    mol_OH = models.IntegerField('[OH-]')
-    all_mol = models.IntegerField('Cm')
+    mol_OH = models.FloatField('nOH', default=1)
+    Cm = models.IntegerField('Cm')
     when_added = models.DateTimeField(default=timezone.now())
 
 

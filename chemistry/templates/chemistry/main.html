@@ -42,6 +42,11 @@
             position: absolute;
             left: 20px;
             bottom: 20px;}
+        .dodaj2 {color: white;
+            float: left;
+            position: relative;
+            left: 20px;
+            bottom: 20px;}
         .usun {color: white;
             float: right;
             position: absolute;
@@ -84,6 +89,8 @@
 <ul class="b">
     <li >Ustalone pH: {{ container.pH }}</li>
     <li>Ilość płynu w tej chwili: {{ container.V }}</li>
+    <li>Ilość płynu w tej chwili: {{ a }}</li>
+    <li>Ilość płynu w tej chwili: {{ b }}</li>
 </ul>
 <br>
 <p class="a">Substancja dodana przez użytkownika:</p>
@@ -95,7 +102,8 @@
 <img src="{{ container.Plot.url }}"  />
 </div>
 
-<a href="/add"><button class="btn dodaj">Dodaj substancję</button></a>
+<a href="/adda"><button class="btn dodaj">Dodaj kwas</button></a>
+<a href="/addh"><button class="btn dodaj2">Dodaj zasadę</button></a>
 <a href="/del"><button class="btn usun" >Usuń zawartość zbiornika</button></a>
 </body>
 </html> 

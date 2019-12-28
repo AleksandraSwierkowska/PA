@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj kwas</title>
+    <style>
+    input[type=text], select {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+     body {
+            background-color: #fdfdfd
+            }
+        * {
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #41B1E3;
+            font-size: 16px;
+            padding: 14px 6px;
+            font-weight: bolder;
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        .btn:hover {background: #41B1E3;}
+
+        .dodaj {color: white; float: left;}
+
+        .header {
+          padding: 25px;
+          text-align: center;
+          background: #41B1E3;
+          color: white;
+          font-size: 24px
+        }
+
+        .wciecie {
+        margin-left: 40px
+        }
+
+    </style>
+</head>
+<div class="header" >
+    <h1>Automat regulujący pH w zbiorniku</h1>
+</div>
+<div class="wciecie">
+<br>
+<form method="post">
+{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj</button>
+</form>
+</div>
+<body>
+<a href="/"><button class="btn dodaj" >Powrót</button></a>
+</body>
+</html>
