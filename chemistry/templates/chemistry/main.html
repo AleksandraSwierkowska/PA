@@ -4,46 +4,97 @@
     <title>Zbiornik</title>
     <meta charset="utf-8">
     <style>
+        body {
+            background-color: #fdfdfd
+            }
         * {
             box-sizing: border-box;
         }
 
+        .column {
+            float: left;
+            width: 50.0%;
+            padding: 5px;
+        }
+
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
         .btn {
-            background-color: lightblue;
-            padding: 14px 28px;
-            font-size: 24px;
+            background-color: #41B1E3;
+            font-size: 16px;
+            padding: 14px 6px;
             font-weight: bolder;
             cursor: pointer;
             display: inline-block;
-
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
         }
 
-        .btn:hover {background: dodgerblue;}
+        .btn:hover {background: #41B1E3;}
 
-        .dodaj {color: black; float: left;}
-        .usun {color: black; float: right;}
+        .dodaj {color: white;
+            float: left;
+            position: absolute;
+            left: 20px;
+            bottom: 20px;}
+        .usun {color: white;
+            float: right;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;}
+
+        .header {
+          padding: 25px;
+          text-align: center;
+          background: #41B1E3;
+          color: white;
+          font-size: 24px
+        }
+
+        .a {
+        font-size: 28px;
+        margin-left: 50px;
+        }
+        .b {
+        font-size: 18px;
+        margin-left: 80px
+        }
+
+        .wykres {
+            position: absolute;
+            right: 40px;
+            bottom: 150px;}
+
     </style>
-    <title>Page Title</title>
 </head>
-<br>
 
-<h1 style="text-align:center;">Automat regulujący pH w zbiorniku</h1>
-<p>Stan zbiornika:</p>
-<ul>
-    <li>Ustalone pH: {{ container.aim_pH }}</li>
+<div class="header" >
+    <h1>Automat regulujący pH w zbiorniku</h1>
+</div>
+<br>
+<br>
+<br>
+<br>
+<p class="a">Stan zbiornika:</p>
+<ul class="b">
+    <li >Ustalone pH: {{ container.pH }}</li>
     <li>Ilość płynu w tej chwili: {{ container.V }}</li>
 </ul>
-<p>Substancja dodana przez użytkownika:</p>
-<ul>
+<br>
+<p class="a">Substancja dodana przez użytkownika:</p>
+<ul class="b">
     <li>Ostatnio dodane: {{ substance }}</li>
     <li>Objętość dodanej substancji: {{ substance.V }}</li>
 </ul>
-<center>
-<img src="{{ container.Plot.url }}" />
-</center>
+<div class="wykres">
+<img src="{{ container.Plot.url }}"  />
+</div>
 
-<br/>
-<br/>
 <a href="/add"><button class="btn dodaj">Dodaj substancję</button></a>
 <a href="/del"><button class="btn usun" >Usuń zawartość zbiornika</button></a>
 </body>
