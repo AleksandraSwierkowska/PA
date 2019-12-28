@@ -2,9 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Add</title>
+    <style>
+    input[type=text], select {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+     body {
+            background-color: #fdfdfd
+            }
+        * {
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #41B1E3;
+            font-size: 16px;
+            padding: 14px 6px;
+            font-weight: bolder;
+            cursor: pointer;
+            display: inline-block;
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        .btn:hover {background: #41B1E3;}
+
+        .dodaj {color: white; float: left;}
+
+        .header {
+          padding: 25px;
+          text-align: center;
+          background: #41B1E3;
+          color: white;
+          font-size: 24px
+        }
+
+        .wciecie {
+        margin-left: 40px
+        }
+
+    </style>
 </head>
+<div class="header" >
+    <h1>Automat regulujący pH w zbiorniku</h1>
+</div>
+<div class="wciecie">
+    <br>
+    <br>
+<div>
+    Rodzaj substancji:
+    <br>
+    <select>
+  <option value="HCl">HCl</option>
+  <option value="NaOH">NaOH</option>
+</select>
+</div>
+<br>
+<form action="/action_page.php">
+Ilość do dolania:
+    <br>
+    <input type="text" name="ilosc">&nbsp;&nbsp;&nbsp;[ml]<br>
+</form>
+</div>
 <body>
-$END$
+<button class="btn dodaj" id="foo">Dolej substancje</button>
 </body>
 </html>

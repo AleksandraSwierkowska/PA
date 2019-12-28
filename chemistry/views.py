@@ -70,7 +70,7 @@ def plot_ph(x, y):
     plt.plot(y, x)
     FigureCanvas(fig)
     buf = io.BytesIO()
-    plt.savefig(buf, format='png')
+    plt.savefig(buf, format='png', transparent=True, dpi=130)
     plt.close(fig)
     return buf
 
