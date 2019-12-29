@@ -61,6 +61,7 @@
           font-size: 24px
         }
 
+
         .a {
         font-size: 28px;
         margin-left: 50px;
@@ -87,23 +88,29 @@
 <br>
 <p class="a">Stan zbiornika:</p>
 <ul class="b">
-    <li >Ustalone pH: {{ container.pH }}</li>
+    <li >Ustalone pH: {{ container.aim_pH }}</li>
     <li>Ilość płynu w tej chwili: {{ container.V }}</li>
-    <li>Ilość płynu w tej chwili: {{ a }}</li>
-    <li>Ilość płynu w tej chwili: {{ b }}</li>
+    <li>Ilości płynów: {{ container.Vs }}</li>
 </ul>
 <br>
-<p class="a">Substancja dodana przez użytkownika:</p>
+<p class="a">Substancja dodana przez system:</p>
 <ul class="b">
-    <li>Ostatnio dodane: {{ substance }}</li>
-    <li>Objętość dodanej substancji: {{ substance.V }}</li>
+    <li>Ostatnio dodane: {{ last_sub }}</li>
+    <li>Objętość dodanej substancji: {{ last_sub_V }}</li>
 </ul>
 <div class="wykres">
 <img src="{{ container.Plot.url }}"  />
 </div>
-
+<div class="wciecie">
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Dodaj</button>
+    </form>
+</div>
 <a href="/adda"><button class="btn dodaj">Dodaj kwas</button></a>
 <a href="/addh"><button class="btn dodaj2">Dodaj zasadę</button></a>
 <a href="/del"><button class="btn usun" >Usuń zawartość zbiornika</button></a>
 </body>
-</html> 
+</html>
