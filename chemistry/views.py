@@ -17,7 +17,7 @@ def acid_added(container, substance):
     container.save(update_fields=['V'])
     container.CmH = (H + substance.mol_H) / container.V
     container.save(update_fields=['CmH'])
-    container.pH = round(-math.log10(container.CmH))
+    container.pH = round(-math.log10(container.CmH), 2)
     container.save(update_fields=['pH'])
     if len(container.pHs) > 0:
         container.pHs = container.pHs + " " + str(container.pH)
@@ -37,7 +37,7 @@ def hydro_added(container, substance):
     container.save(update_fields=['V'])
     container.CmOH = (OH + substance.mol_OH) / container.V
     container.save(update_fields=['CmOH'])
-    container.pH = round(14 + math.log10(container.CmOH))
+    container.pH = round(14 + math.log10(container.CmOH), 2)
     container.save(update_fields=['pH'])
     if len(container.pHs) > 0:
         container.pHs = container.pHs + " " + str(container.pH)
@@ -52,16 +52,21 @@ def hydro_added(container, substance):
 
 
 def reaction(container):
-    #tutaj liczymy ile V NaOH lub HCl dodac
-    V_to_add = round((container.V * abs(10 ** (-container.pH) - 10 ** (-container.aim_pH))) / (
-            10 ** (-container.aim_pH) + 1))  # 1 as Cm of either NaOH or HCl
+    # tutaj liczymy ile V NaOH lub HCl dodac
     if container.pH < container.aim_pH:
+        V_to_add = round((container.V * (10 ** (-container.pH) - 10 ** (-container.aim_pH))) / (
+                10 ** (-container.aim_pH) + 1),2)  # 1 as Cm of either NaOH or HCl
         container.last_sub = "NaOH"
     elif container.pH > container.aim_pH:
+        V_to_add = round((container.V * (10 ** (-(14 - container.pH)) - 10 ** (-(14 - container.aim_pH)))) / (
+                10 ** (-(14 - container.aim_pH)) + 1), 2)  # 1 as Cm of either NaOH or HCl
         container.last_sub = "HCl"
+    else:
+        V_to_add = 0
+        container.last_sub = "Nothing"
     container.pHs = container.pHs + " " + str(container.aim_pH)
-    container.Vs = container.Vs + " " + str(container.V + V_to_add)
-    container.V += V_to_add
+    container.Vs = container.Vs + " " + str(round(container.V + V_to_add,2))
+    container.V = round(container.V + V_to_add, 2)
     container.pH = container.aim_pH
     container.CmH = 10 ** (-container.pH)
     container.CmOH = 10 ** (-(14 - container.pH))
@@ -160,6 +165,7 @@ def delete(request):
 
 
 def plot_ph(y, x):
+    plt.clf()
     plt.xlabel("Volume")
     plt.ylabel("pH")
     plt.minorticks_on()

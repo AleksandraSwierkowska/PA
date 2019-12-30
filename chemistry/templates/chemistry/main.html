@@ -4,6 +4,14 @@
     <title>Zbiornik</title>
     <meta charset="utf-8">
     <style>
+                input {
+                    width: 10%;
+                  padding: 12px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  resize: vertical;
+                    margin-left: 10px;
+}
         body {
             background-color: #fdfdfd
             }
@@ -13,7 +21,7 @@
 
         .column {
             float: left;
-            width: 50.0%;
+            width: 25.0%;
             padding: 5px;
         }
 
@@ -23,47 +31,57 @@
             clear: both;
             display: table;
         }
-        .btn {
-            background-color: #41B1E3;
+                .btn2 {
+                    position: relative;
+                    left: 580px;
+            bottom: 69px;
+            background-color: #000066;
             font-size: 16px;
-            padding: 14px 6px;
+            padding: 8px 12px;
             font-weight: bolder;
             cursor: pointer;
             display: inline-block;
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
+            color: white;
+        }
+
+        .btn {
+            background-color: #000066;
+            font-size: 18px;
+            padding: 10px 14px;
+            font-weight: bolder;
+            cursor: pointer;
+            display: inline-block;
+            color: white;
         }
 
         .btn:hover {background: #41B1E3;}
 
-        .dodaj {color: white;
+        .dodaj {
             float: left;
             position: absolute;
-            left: 20px;
-            bottom: 20px;}
+            left: 40px;
+            bottom: 40px;}
         .dodaj2 {color: white;
             float: left;
-            position: relative;
-            left: 20px;
-            bottom: 20px;}
+            position: absolute;
+            left: 200px;
+            bottom: 40px;}
         .usun {color: white;
             float: right;
             position: absolute;
-            right: 20px;
-            bottom: 20px;}
+            right: 40px;
+            bottom: 40px;}
 
         .header {
           padding: 25px;
           text-align: center;
-          background: #41B1E3;
+          background: #000066;
           color: white;
-          font-size: 24px
+          font-size: 18px
         }
 
-
         .a {
-        font-size: 28px;
+        font-size: 24px;
         margin-left: 50px;
         }
         .b {
@@ -73,8 +91,10 @@
 
         .wykres {
             position: absolute;
-            right: 40px;
-            bottom: 150px;}
+            right: 80px;
+            bottom: 240px;}
+
+
 
     </style>
 </head>
@@ -86,12 +106,22 @@
 <br>
 <br>
 <br>
+<div class="a">
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit" class="btn2">Dodaj</button>
+    </form>
+
+</div>
 <p class="a">Stan zbiornika:</p>
 <ul class="b">
     <li >Ustalone pH: {{ container.aim_pH }}</li>
     <li>Ilość płynu w tej chwili: {{ container.V }}</li>
     <li>Ilości płynów: {{ container.Vs }}</li>
 </ul>
+<br>
 <br>
 <p class="a">Substancja dodana przez system:</p>
 <ul class="b">
@@ -100,14 +130,6 @@
 </ul>
 <div class="wykres">
 <img src="{{ container.Plot.url }}"  />
-</div>
-<div class="wciecie">
-    <br>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Dodaj</button>
-    </form>
 </div>
 <a href="/adda"><button class="btn dodaj">Dodaj kwas</button></a>
 <a href="/addh"><button class="btn dodaj2">Dodaj zasadę</button></a>

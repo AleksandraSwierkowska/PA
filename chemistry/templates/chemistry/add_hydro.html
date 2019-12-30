@@ -13,6 +13,20 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+        input {
+    width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=text] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
 
      body {
             background-color: #fdfdfd
@@ -20,29 +34,52 @@
         * {
             box-sizing: border-box;
         }
-        .btn {
-            background-color: #41B1E3;
+
+        .btn2 {
+            background-color: #000066;
             font-size: 16px;
-            padding: 14px 6px;
+            padding: 8px 12px;
             font-weight: bolder;
             cursor: pointer;
             display: inline-block;
-            position: absolute;
-            left: 20px;
-            bottom: 20px;
+            color: white;
+        }
+        .btn {
+            background-color: #000066;
+            font-size: 18px;
+            padding: 10px 14px;
+            font-weight: bolder;
+            cursor: pointer;
+            display: inline-block;
+            color: white;
         }
 
         .btn:hover {background: #41B1E3;}
 
-        .dodaj {color: white; float: left;}
+        .dodaj {
+            float: left;
+            position: absolute;
+            left: 20px;
+            bottom: 20px;}
+        .dodaj2 {color: white;
+            float: left;
+            position: absolute;
+            left: 180px;
+            bottom: 20px;}
+        .usun {color: white;
+            float: right;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;}
 
         .header {
           padding: 25px;
           text-align: center;
-          background: #41B1E3;
+          background: #000066;
           color: white;
-          font-size: 24px
+          font-size: 18px
         }
+
 
         .wciecie {
         margin-left: 40px
@@ -58,7 +95,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Dodaj</button>
+        <button type="submit" class="btn2">Dodaj</button>
     </form>
 </div>
 <body>
