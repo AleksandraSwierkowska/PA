@@ -160,13 +160,15 @@ def delete(request):
     container.pHs = '7'
     container.Vs = '1'
     container.Plot = "media/pic1.png"
-    container.save(update_fields=['Vs', 'pHs', 'V', 'aim_pH', 'pH', 'CmH', 'CmOH', 'Plot'])
+    container.last_sub_V = 1
+    container.last_sub = "H2O"
+    container.save(update_fields=['Vs', 'pHs', 'V', 'aim_pH', 'pH', 'CmH', 'CmOH', 'Plot', 'last_sub', 'last_sub_V'])
     return redirect('/')
 
 
 def plot_ph(y, x):
     plt.clf()
-    plt.xlabel("Volume")
+    plt.xlabel("Objętość")
     plt.ylabel("pH")
     plt.minorticks_on()
     plt.grid(which="major", linestyle='-', linewidth='0.7')
